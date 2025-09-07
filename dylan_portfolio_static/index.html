@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dylan Galvan — Portfolio</title>
+
+  <!-- Tailwind CSS via CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <!-- AOS (Animate On Scroll) styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+  <!-- Meta/SEO -->
+  <meta name="description" content="Dylan Galvan — CS student building mobile apps, AI projects, and security tools.">
+  <meta property="og:title" content="Dylan Galvan — Portfolio">
+  <meta property="og:description" content="Projects, experience, and ways to connect.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/images/og.jpg">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="icon" href="/favicon.ico">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    /* Soft gradient orbs for personality */
+    .orb { position: absolute; filter: blur(60px); opacity: .35; pointer-events: none; transform: translateZ(0); }
+    .orb--one { width: 360px; height: 360px; left: -80px; top: -40px; background: radial-gradient(circle at 30% 30%, #60a5fa, transparent 60%); }
+    .orb--two { width: 420px; height: 420px; right: -120px; top: 240px; background: radial-gradient(circle at 60% 40%, #22d3ee, transparent 60%); }
+    .orb--three { width: 380px; height: 380px; left: 20%; bottom: -120px; background: radial-gradient(circle at 50% 50%, #f472b6, transparent 60%); }
+    /* Glassy navbar backdrop */
+    .backdrop-glass {
+      background-color: rgba(255,255,255,.6);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      backdrop-filter: saturate(180%) blur(10px);
+    }
+    .active-link { color: #1d4ed8; }
+    /* Clamp helper for Tailwind v2 */
+    .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    /* Phone tuning */
+    @media (max-width: 640px) {
+      .orb { filter: blur(40px); opacity: .25; }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 relative overflow-x-hidden">
+  <!-- Decorative gradient orbs -->
+  <div class="orb orb--one" aria-hidden="true"></div>
+  <div class="orb orb--two" aria-hidden="true"></div>
+  <div class="orb orb--three" aria-hidden="true"></div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="fixed top-0 left-0 right-0 z-40">
+    <nav class="max-w-6xl mx-auto px-4">
+      <div class="mt-4 mb-2 md:mt-6 md:mb-0 rounded-full backdrop-glass shadow-sm border border-white bg-opacity-60">
+        <div class="flex items-center justify-between px-4 py-2">
+          <a href="#about" class="flex items-center gap-2 font-semibold tracking-tight">
+            <span class="w-8 h-8 rounded-full bg-blue-600 text-white grid place-items-center">DG</span>
+            <span>Dylan</span>
+          </a>
+
+          <!-- Desktop links -->
+          <div class="hidden md:flex items-center gap-5 text-sm">
+            <a class="navlink hover:text-blue-700 transition-colors" href="#about">About</a>
+            <a class="navlink hover:text-blue-700 transition-colors" href="#skills">Skills</a>
+            <a class="navlink hover:text-blue-700 transition-colors" href="#experience">Experience</a>
+            <a class="navlink hover:text-blue-700 transition-colors" href="#projects">Projects</a>
+            <a class="navlink hover:text-blue-700 transition-colors" href="#contact">Contact</a>
+          </div>
+
+          <!-- Resume (desktop) -->
+          <a href="assets/resume/DylanGalvan_swe_Resume.pdf"
+             download
+             class="hidden md:inline-flex bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-colors">
+            Resume
+          </a>
+
+          <!-- Mobile hamburger -->
+          <button id="nav-toggle"
+                  class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition"
+                  aria-label="Toggle menu" aria-expanded="false">
+            ☰
+          </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pb-3">
+          <div class="flex flex-col gap-1 text-sm">
+            <a class="block py-3 navlink" href="#about">About</a>
+            <a class="block py-3 navlink" href="#skills">Skills</a>
+            <a class="block py-3 navlink" href="#experience">Experience</a>
+            <a class="block py-3 navlink" href="#projects">Projects</a>
+            <a class="block py-3 navlink" href="#contact">Contact</a>
+            <a href="assets/resume/DylanGalvan_swe_Resume.pdf" download class="block py-3 text-blue-700 font-medium">Download Resume</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="h-24"></div><!-- spacer so content isn’t hidden behind fixed nav -->
+
+  <!-- ===================== HERO / ABOUT ===================== -->
+  <section id="about" class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative">
+    <!-- Headshot (with gentle parallax) -->
+    <!-- Replace with your file at assets/images/headshot.jpg -->
+    <div id="parallax-wrap" class="w-32 h-32 mb-6 rounded-full overflow-hidden ring-4 ring-blue-600 ring-opacity-20 transform will-change-transform">
+      <img src="assets/logos/mypic.png" alt="Dylan Galvan headshot" class="w-full h-full object-cover" style="object-position: 10% 10%;" loading="lazy" decoding="async">
+    </div>
+
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-4" data-aos="fade-up">Dylan Galvan</h1>
+    <p class="text-xl md:text-2xl text-blue-700 mb-2" data-aos="fade-up" data-aos-delay="50">Computer Science Student @ UTEP • SWE | ML/AI | Cybersecurity</p>
+    <p class="text-sm text-gray-600 mb-6" data-aos="fade-up" data-aos-delay="100">Based in El Paso, TX</p>
+
+   <p class="max-w-3xl text-base md:text-lg text-gray-700 mb-8 leading-relaxed" data-aos="fade-up" data-aos-delay="150">
+  I’m a senior Computer Science student who enjoys turning ideas into working software—from mobile apps to AI models to security tools. I thrive on learning new technologies, tackling challenges outside my comfort zone, and building projects that make a real impact.
+</p>
+
+
+    <!-- Hero CTAs -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10" data-aos="zoom-in" data-aos-delay="200">
+      <a href="https://www.linkedin.com/in/dylan-galvan/"
+   target="_blank" rel="noopener noreferrer"
+   class="bg-blue-600 text-white px-5 py-2.5 rounded-full hover:bg-blue-700 transition">
+  LinkedIn
+</a>
+<a href="https://github.com/GalvanDylan"
+   target="_blank" rel="noopener noreferrer"
+   class="border border-blue-600 text-blue-600 px-5 py-2.5 rounded-full hover:bg-blue-600 hover:text-white transition">
+  GitHub
+</a>
+
+    </div>
+    
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+<section id="skills" class="py-16 bg-gray-50 relative">
+  <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Skills</h2>
+  <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+    <!-- Languages -->
+    <div data-aos="fade-up" data-aos-delay="50">
+      <h3 class="text-lg font-semibold mb-4 text-gray-700">Languages</h3>
+      <div class="flex flex-wrap gap-2">
+        <span class="px-3 py-1 rounded-full bg-blue-600 text-white text-sm hover:scale-105 transition">Java</span>
+        <span class="px-3 py-1 rounded-full bg-blue-600 text-white text-sm hover:scale-105 transition">Python</span>
+        <span class="px-3 py-1 rounded-full bg-blue-600 text-white text-sm hover:scale-105 transition">C</span>
+        <span class="px-3 py-1 rounded-full bg-blue-600 text-white text-sm hover:scale-105 transition">JavaScript</span>
+        <span class="px-3 py-1 rounded-full bg-blue-600 text-white text-sm hover:scale-105 transition">HTML/CSS</span>
+      </div>
+    </div>
+    <!-- Frameworks & Libraries -->
+    <div data-aos="fade-up" data-aos-delay="100">
+      <h3 class="text-lg font-semibold mb-4 text-gray-700">Frameworks & Libraries</h3>
+      <div class="flex flex-wrap gap-2">
+        <span class="px-3 py-1 rounded-full bg-indigo-600 text-white text-sm hover:scale-105 transition">React Native</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-600 text-white text-sm hover:scale-105 transition">Expo</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-600 text-white text-sm hover:scale-105 transition">Tailwind</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-600 text-white text-sm hover:scale-105 transition">TensorFlow</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-600 text-white text-sm hover:scale-105 transition">scikit-learn</span>
+        <span class="px-3 py-1 rounded-full bg-indigo-600 text-white text-sm hover:scale-105 transition">OpenCV</span>
+      </div>
+    </div>
+    <!-- Tools -->
+    <div data-aos="fade-up" data-aos-delay="150">
+      <h3 class="text-lg font-semibold mb-4 text-gray-700">Tools</h3>
+      <div class="flex flex-wrap gap-2">
+        <span class="px-3 py-1 rounded-full bg-green-600 text-white text-sm hover:scale-105 transition">Git</span>
+        <span class="px-3 py-1 rounded-full bg-green-600 text-white text-sm hover:scale-105 transition">GitHub</span>
+        <span class="px-3 py-1 rounded-full bg-green-600 text-white text-sm hover:scale-105 transition">Docker</span>
+        <span class="px-3 py-1 rounded-full bg-green-600 text-white text-sm hover:scale-105 transition">RabbitMQ</span>
+        <span class="px-3 py-1 rounded-full bg-green-600 text-white text-sm hover:scale-105 transition">VS Code</span>
+        <span class="px-3 py-1 rounded-full bg-green-600 text-white text-sm hover:scale-105 transition">Linux/Unix</span>
+        <span class="px-3 py-1 rounded-full bg-green-600 text-white text-sm hover:scale-105 transition">Command Line</span>
+        <span class="px-3 py-1 rounded-full bg-green-600 text-white text-sm hover:scale-105 transition">Netlify</span>
+      </div>
+    </div>
+    <!-- Databases -->
+    <div data-aos="fade-up" data-aos-delay="200">
+      <h3 class="text-lg font-semibold mb-4 text-gray-700">Databases</h3>
+      <div class="flex flex-wrap gap-2">
+        <span class="px-3 py-1 rounded-full bg-purple-600 text-white text-sm hover:scale-105 transition">MySQL</span>
+        <span class="px-3 py-1 rounded-full bg-purple-600 text-white text-sm hover:scale-105 transition">Neo4j</span>
+      </div>
+    </div>
+    
+    
+  </div>
+</section>
+
+  <!-- ===================== EXPERIENCE (sorted latest → oldest) ===================== -->
+  <section id="experience" class="py-16">
+    <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Experience</h2>
+    <div class="container mx-auto px-4 space-y-8">
+
+      <!-- Freelance Web Developer — Present -->
+      <div data-aos="fade-up" class="flex flex-col md:flex-row md:items-start md:gap-6 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+        <div class="flex-shrink-0 mb-4 md:mb-0">
+          <img src="assets/logos/placeholder.png" alt="Self-Employed logo" class="w-16 h-16 object-contain rounded-lg" loading="lazy" decoding="async"/>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold">Freelance Web Developer</h3>
+          <p class="text-sm text-gray-500">Self-Employed</p>
+          <p class="text-sm text-gray-500 mb-2">Aug 2025 – Present · El Paso, TX</p>
+          <ul class="list-disc list-inside space-y-1 mb-3 leading-relaxed">
+            <li>
+              Delivered a fully approved prototype in under two weeks by gathering requirements, iterating on feedback,
+              and shipping a responsive demo site (HTML, CSS, JS).
+              <a href="https://eclectic-kitsune-9e8edb.netlify.app/"
+                 target="_blank" rel="noopener nofollow"
+                 class="text-blue-600 hover:underline">[View Demo]</a>
+            </li>
+            <li>Improved reliability and trust by reviewing hosting setup and migrating from HTTP→HTTPS, while advising on deployment and security best practices.</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">HTML</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">CSS</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- U.S. Army — Present -->
+      <div data-aos="fade-up" class="flex flex-col md:flex-row md:items-start md:gap-6 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+        <div class="flex-shrink-0 mb-4 md:mb-0">
+          <img src="assets/logos/us-army-logo-png_seeklogo-146455.png" alt="U.S. Army logo" class="w-16 h-16 object-contain rounded-lg" loading="lazy" decoding="async"/>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold">Information Technology Specialist</h3>
+          <p class="text-sm text-gray-500">U.S. Army</p>
+          <p class="text-sm text-gray-500 mb-2">Feb 2022 – Present</p>
+          <ul class="list-disc list-inside space-y-1 mb-3 leading-relaxed">
+            <li>Reimaged and set up Windows workstations and laptops to ensure users had reliable, standardized systems.</li>
+            <li>Provided technical support by troubleshooting and resolving help desk tickets, addressing hardware/software issues for soldiers and leadership.</li>
+            <li>Configured and deployed new workstations, peripherals, and network connections to maintain unit readiness while operating under a current security clearance.</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Workstation Deployment</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Security</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Summer Camp — ended Jul 2025 -->
+      <div data-aos="fade-up" class="flex flex-col md:flex-row md:items-start md:gap-6 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+        <div class="flex-shrink-0 mb-4 md:mb-0">
+          <img src="assets/logos/utep-miners-logo-png_seeklogo-433674.png" alt="UTEP College of Engineering logo" class="w-16 h-16 object-contain rounded-lg" loading="lazy" decoding="async"/>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold">AI Summer Camp Instructor</h3>
+          <p class="text-sm text-gray-500">UTEP College of Engineering</p>
+          <p class="text-sm text-gray-500 mb-2">May 2025 – Jul 2025 · El Paso, TX</p>
+          <ul class="list-disc list-inside space-y-1 mb-3 leading-relaxed">
+            <li>Engaged 85+ students across Python, classification, regression, and neural nets; achieved &gt;90% participation and completion.</li>
+            <li>Designed and authored curriculum material, including lectures, labs, and assessments to introduce core ML concepts in an accessible way.</li>
+            <li>Mentored student teams during hands-on projects, reinforcing coding best practices and guiding them from data prep to model evaluation.</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Python</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Scikit-Learn</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Machine Learning</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Capital One — ended Aug 2024 -->
+      <div data-aos="fade-up" class="flex flex-col md:flex-row md:items-start md:gap-6 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+        <div class="flex-shrink-0 mb-4 md:mb-0">
+          <img src="assets/logos/capital-one-logo-png_seeklogo-425557.png" alt="Capital One logo" class="w-16 h-16 object-contain rounded-lg" loading="lazy" decoding="async"/>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold">Program Participant – Tech Mini Mester</h3>
+          <p class="text-sm text-gray-500">Capital One</p>
+          <p class="text-sm text-gray-500 mb-2">Jul 2024 – Aug 2024</p>
+          <ul class="list-disc list-inside space-y-1 mb-3 leading-relaxed">
+            <li>Selected 1/60 nationwide for a competitive SWE program with workshops in JavaScript, Node.js, and NPM.</li>
+            <li>Built a CLI app in 24 hours, designing core logic and passing all functional tests before presenting to engineering leadership.</li>
+            <li>Collaborated in small teams to debug, refactor, and optimize code, mirroring real-world SWE practices.</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">JavaScript</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Node.js</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">NPM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloomberg — Jul 2024 -->
+      <div data-aos="fade-up" class="flex flex-col md:flex-row md:items-start md:gap-6 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+        <div class="flex-shrink-0 mb-4 md:mb-0">
+          <img src="assets/logos/bloomberg-logo-vector.png" alt="Bloomberg logo" class="w-16 h-16 object-contain rounded-lg" loading="lazy" decoding="async"/>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold">Tech Lab Participant</h3>
+          <p class="text-sm text-gray-500">Bloomberg</p>
+          <p class="text-sm text-gray-500 mb-2">Jul 2024</p>
+          <ul class="list-disc list-inside space-y-1 mb-3 leading-relaxed">
+            <li>Improved real-time throughput by implementing a Python + RabbitMQ + Docker pipeline and testing with synthetic loads.</li>
+            <li>Selected as 1 of 40 students to participate in an exclusive Bloomberg Tech Lab program.</li>
+            <li>Partnered with Bloomberg software engineers during a one-day lab to design and refine the project solution.</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Python</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">RabbitMQ</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Docker</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dell Tech Academy — ended Apr 2024 -->
+      <div data-aos="fade-up" class="flex flex-col md:flex-row md:items-start md:gap-6 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+        <div class="flex-shrink-0 mb-4 md:mb-0">
+          <img src="assets/logos/dell-logo-png_seeklogo-39672.png" alt="Dell Technologies logo" class="w-16 h-16 object-contain rounded-lg" loading="lazy" decoding="async"/>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold">Dell Tech Academy Fellow</h3>
+          <p class="text-sm text-gray-500">Dell Technologies</p>
+          <p class="text-sm text-gray-500 mb-2">Jan 2024 – Apr 2024</p>
+          <ul class="list-disc list-inside space-y-1 mb-3 leading-relaxed">
+            <li>Selected from 255 students for a Dell program focused on solving real-world business problems through analytics and data storytelling.</li>
+            <li>Collaborated with Dell professionals to analyze a business case and design a data-driven path using Power BI dashboards.</li>
+            <li>Presented to Dell leadership, refining visuals, KPIs, and recommendations based on stakeholder feedback.</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Power BI</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Data Visualization</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Undergraduate Researcher — ended Jan 2024 -->
+      <div data-aos="fade-up" class="flex flex-col md:flex-row md:items-start md:gap-6 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+        <div class="flex-shrink-0 mb-4 md:mb-0">
+          <img src="assets/logos/utep-miners-logo-png_seeklogo-433674.png" alt="UTEP logo" class="w-16 h-16 object-contain rounded-lg" loading="lazy" decoding="async"/>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold">Undergraduate Researcher</h3>
+          <p class="text-sm text-gray-500">University of Texas at El Paso</p>
+          <p class="text-sm text-gray-500 mb-2">Sep 2023 – Jan 2024 · El Paso, TX</p>
+          <ul class="list-disc list-inside space-y-1 mb-3 leading-relaxed">
+            <li>Investigated NLP approaches to link CVE and CAPEC knowledge bases for stronger threat analysis.</li>
+            <li>Built a Python XML parser to accelerate CAPEC data extraction and schema comprehension.</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Python</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">NLP</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Data Parsing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI4ALL — ended Jun 2023 -->
+      <div data-aos="fade-up" class="flex flex-col md:flex-row md:items-start md:gap-6 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+        <div class="flex-shrink-0 mb-4 md:mb-0">
+          <img src="assets/logos/AI4ALL_Logo.png" alt="AI4ALL logo" class="w-16 h-16 object-contain rounded-lg" loading="lazy" decoding="async"/>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold">Program Member</h3>
+          <p class="text-sm text-gray-500">AI4ALL Program</p>
+          <p class="text-sm text-gray-500 mb-2">Sep 2022 – Jun 2023</p>
+          <ul class="list-disc list-inside space-y-1 mb-3 leading-relaxed">
+            <li>Selected for an introduction-to-AI program, mentored by an AI professional while learning core ML concepts and ethics.</li>
+            <li>Collaborated in a team of 4 to develop a tweet classification model that improved harmful-content detection accuracy from 88% → 93.2% using NLP and decision trees.</li>
+            <li>Presented project methodology and error analysis to peers and mentors, incorporating feedback to refine results.</li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Machine Learning</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">NLP</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== PROJECTS (sorted latest → oldest) ===================== -->
+  <section id="projects" class="py-16 bg-gray-50 relative">
+    <h2 class="text-3xl font-bold text-center mb-10" data-aos="fade-up">Projects</h2>
+
+    <div class="container mx-auto px-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+      <!-- ColorWall — Present -->
+      <article data-aos="fade-up" class="group h-full bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition">
+        <div class="p-6 flex flex-col h-full">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">ColorWall</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">Ongoing</span>
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Creator • Aug 2025 – Present</p>
+          <p class="text-sm text-gray-700 mt-3 leading-relaxed">
+            iOS habit-tracking wallpaper app that turns consistency into a visual mural.
+          </p>
+          <ul class="list-disc list-inside space-y-1 mt-4 text-sm text-gray-700">
+            <li>Built with React Native + TypeScript (Expo); swipe-paint mural interaction motivates streaks.</li>
+            <li>Integrated iOS Shortcuts + secure storage for automated, reliable daily logging.</li>
+            <li>Added persistence and smooth swipe animations for a cohesive, engaging feel.</li>
+          </ul>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">React Native</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">TypeScript</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Expo</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- DoD CVPA Tool — Ongoing -->
+      <article data-aos="fade-up" class="group h-full bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition">
+        <div class="p-6 flex flex-col h-full">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Cybersecurity Assessment Tool for DoD CVPA</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">Ongoing</span>
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Team Member • Jan 2025 – Present</p>
+          <p class="text-sm text-gray-700 mt-3 leading-relaxed">
+            CEAD collaboration to consolidate recon data, model container risks, and support DoD vulnerability assessments.
+          </p>
+          <ul class="list-disc list-inside space-y-1 mt-4 text-sm text-gray-700">
+            <li>Collaborated with an 8-person team on real-world CEAD operations for DoD systems.</li>
+            <li>Modeled container risk in Neo4j and designed an “Exploit Weaknesses” flow (select targets, configure Metasploit, upload PoCs).</li>
+            <li>Built insecure testbeds to validate scanners/exploit flows; wrote remediation checklists to harden Docker configs.</li>
+            <li>Contributed to system architecture (DFDs, state diagrams) and UI/UX in Penpot to streamline analyst workflows.</li>
+          </ul>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Python</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Docker</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Neo4j</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Metasploit</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">UI/UX</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Penpot</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Real-Time Drowsiness — Jun 2025 -->
+      <article data-aos="fade-up" class="group h-full bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition">
+        <div class="p-6 flex flex-col h-full">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Real-Time Drowsiness Detection System</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-700 border border-gray-200">Jun 2025</span>
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Developer</p>
+          <p class="text-sm text-gray-700 mt-3 leading-relaxed">Computer vision system monitoring driver fatigue via Eye Aspect Ratio.</p>
+          <ul class="list-disc list-inside space-y-1 mt-4 text-sm text-gray-700">
+            <li>Built a real-time drowsiness detection system in Python/OpenCV, computing Eye Aspect Ratio (EAR) from the laptop’s webcam feed.</li>
+            <li>Cut false positives by tuning EAR thresholds and adding temporal smoothing while maintaining real-time FPS on the laptop’s integrated hardware.</li>
+            <li>Used MediaPipe face/eye landmarks to robustly track blinks and eye-closure duration.</li>
+          </ul>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Python</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">OpenCV</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">MediaPipe</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Internship Tracker — Feb 2025 -->
+      <article data-aos="fade-up" class="group h-full bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition">
+        <div class="p-6 flex flex-col h-full">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">Internship Applications Tracker</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-700 border border-gray-200">Feb 2025</span>
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Chrome Extension • Developer</p>
+          <p class="text-sm text-gray-700 mt-3 leading-relaxed">Tracks internship applications in a simple, accessible dashboard.</p>
+          <ul class="list-disc list-inside space-y-1 mt-4 text-sm text-gray-700">
+            <li>Built with HTML + JavaScript to organize and monitor applications at a glance.</li>
+            <li>Used Chrome Storage API for persistent client-side data that survives restarts.</li>
+          </ul>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">HTML</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">CSS</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">JavaScript</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Chrome Storage API</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2D Fighting Game — Mar 2024 -->
+      <article data-aos="fade-up" class="group h-full bg-white rounded-2xl border border-gray-100 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition">
+        <div class="p-6 flex flex-col h-full">
+          <div class="flex items-start justify-between">
+            <h3 class="text-lg font-semibold">2D Fighting Game</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-700 border border-gray-200">Mar 2024</span>
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Developer</p>
+          <p class="text-sm text-gray-700 mt-3 leading-relaxed">Action game with sprite animations, collisions, and responsive controls.</p>
+          <ul class="list-disc list-inside space-y-1 mt-4 text-sm text-gray-700">
+            <li>Scripted animation states (idle/run/jump/attacks) with tuned timing windows.</li>
+            <li>Implemented hitboxes/hurtboxes and knockback to create satisfying combat.</li>
+          </ul>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">JavaScript</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">HTML</span>
+            <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded-full">Canvas API</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <!-- CONTACT SECTION -->
+<section id="contact" class="py-20 bg-gray-50">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">Lets Connect!</h2>
+    <p class="text-gray-600 mb-10" data-aos="fade-up" data-aos-delay="100">
+      Have a question, opportunity, or just want to say hello? Drop me a message below and I’ll get back to you.
+    </p>
+
+    <!-- CONTACT FORM -->
+    <form action="https://formspree.io/f/mzzayjkp" method="POST" class="space-y-4 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+      <!-- Name -->
+      <input type="text" name="name" placeholder="Name" required
+             class="w-full border px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+      <!-- Email -->
+      <input type="email" name="email" placeholder="Email" required
+             class="w-full border px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+      <!-- Message -->
+  <textarea name="message" rows="5" placeholder="Message" required
+        class="w-full border px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" style="resize: none;"></textarea>
+
+      <!-- Hidden fields -->
+      <input type="hidden" name="_subject" value="New portfolio contact form submission">
+      <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+
+      <!-- Button -->
+      <button type="submit"
+              class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
+
+
+  <!-- Back-to-top -->
+  <button id="toTop" class="fixed right-4 bottom-4 z-40 hidden w-10 h-10 rounded-full bg-blue-600 text-white shadow-md hover:bg-blue-700 transition" aria-label="Back to top">↑</button>
+
+  <!-- AOS + small JS (nav active link + parallax + contact + hamburger + top) -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Respect reduced motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    AOS.init({ once: true, duration: prefersReduced ? 0 : 650, easing: 'ease-out', disable: prefersReduced });
+
+    // Contact form (simulate inline success)
+    document.getElementById('contact-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      this.classList.add('hidden');
+      document.getElementById('contact-response').classList.remove('hidden');
+    });
+
+    // Scroll spy for navbar active link
+    const links = document.querySelectorAll('.navlink');
+    const sections = [...document.querySelectorAll('section[id]')];
+
+    function onScroll() {
+      const scrollPos = window.scrollY + 120; // offset for navbar
+      let current = sections[0].id;
+      for (const sec of sections) {
+        if (scrollPos >= sec.offsetTop) current = sec.id;
+      }
+      links.forEach(l => {
+        l.classList.toggle('active-link', l.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // Gentle parallax on headshot (desktop only)
+    const parallax = document.getElementById('parallax-wrap');
+    function parallaxHandler(e) {
+      const x = (e.clientX / window.innerWidth - 0.5) * 6;
+      const y = (e.clientY / window.innerHeight - 0.5) * 6;
+      parallax.style.transform = `translate(${x}px, ${y}px)`;
+    }
+    if (!prefersReduced && window.innerWidth >= 768 && parallax) {
+      window.addEventListener('mousemove', parallaxHandler, { passive: true });
+    }
+
+    // Mobile hamburger
+    const navBtn = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (navBtn && mobileMenu) {
+      navBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        navBtn.setAttribute('aria-expanded', String(!isHidden));
+      });
+      // close on link click
+      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        navBtn.setAttribute('aria-expanded', 'false');
+      }));
+    }
+
+    // Back to top
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      toTop.classList.toggle('hidden', window.scrollY < 600);
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
